@@ -49,10 +49,13 @@ montecarlopi = function () {
     greenPx.data[3] = 255; // A
 
     function loop() {
-        for (var i = 0; i < 50; ++i) {
-            throwOne();
-        }
-        setTimeout(loop, 0);
+      var datapoint = 0;
+      while(datapoint < 50){
+        throwOne();
+        datapoint += 1;
+      }
+
+      setTimeout(loop, 0);
     }
 
     function throwOne() {
@@ -80,5 +83,5 @@ montecarlopi = function () {
         throwCtx.putImageData(coloredPx, imgX, imgY);
     };
 
-    setTimeout(loop, 0);
+    loop()
 };
