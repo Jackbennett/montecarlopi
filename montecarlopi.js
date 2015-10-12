@@ -1,12 +1,21 @@
-﻿montecarlopi = function () {
-    (function () {
-        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-                                    window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-        window.requestAnimationFrame = requestAnimationFrame;
-    })();
+var time = function(){
+  var time = new Date().getTime();
+
+  function refresh() {
+    if(new Date().getTime() - time >= 600000)
+      window.location.reload(true);
+    else
+      setTimeout(refresh, 10000);
+   }
+
+  setTimeout(refresh, 10000)
+}
+
+montecarlopi = function () {
+    time()
 
     var hitsEl = document.getElementById('hits');
-    var missesEl = document.getElementById('misses');
+    var totalEl = document.getElementById('total');
     var piEl = document.getElementById('pi');
 
     var canvas = document.getElementById('circle');
@@ -56,15 +65,14 @@
             hitsEl.textContent = hits
             var coloredPx = greenPx;
         } else {
-            ++misses;
-            missesEl.textContent = misses;
             var coloredPx = redPx;
         }
         ++total;
+        totalEl.textContent = total;
 
         // Recalculate pi
-        piEl.textContent = 4 * hits / total;
-        
+        piEl.textContent = (4 * hits / total).toFixed(14);
+
         // Put pixel
         var imgX = (x + 1) / 2 * width;
         var imgY = (y + 1) / 2 * height;

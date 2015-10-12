@@ -1,16 +1,38 @@
-﻿body
+body
 {
 }
-
+ol{
+    padding: 20px
+}
 .overlap {
     position: absolute;
     left: 0px;
     top: 0px;
 }
+.equation{
+    width: 600px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+.content{
+    position: absolute;
+    left: 788px
+}
 
-#stats {
+.equation h3{clear:both}
+.equation .divide{border-bottom:2px solid #000}
+.equation .exp{font-size: 2em;line-height: 3em}
+.equation .equal{font-size: 2em;line-height: 3.3em}
+.equation .left{width:25%;margin-right: 10%; float:left}
+.equation .eq{width:13%;margin-right: 2%;float:left}
+.equation .right{width:35%;float:left}
+
+.stat {
+    margin: 0 20px;
+    display: block;
+    text-align: center;
     background-color: rgba(224, 224, 224, 0.80);
-    width: 180px;
     border-radius: 8px;
     border: solid 1px gray;
     padding: 5px

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Monte Carlo Pi visualization using Canvas and JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="montecarlopi.css" />
+    <script type="text/javascript" src="montecarlopi.js"></script>
+</head>
+<body onload="montecarlopi()">
+
+    <canvas id="throws" class="overlap" width="768" height="768"></canvas>
+    <canvas id="circle" class="overlap" width="768" height="768"></canvas>
+    
+    <div class="content">
+        <h1>Value of Pi</h1>
+        <h4>A Raspberry Pi, Caluclating the value of Pi.</h4>
+        <p>Monte Carlo methods (or Monte Carlo experiments) are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results.</p>
+        <ol>
+            <li>Draw a square on the ground, then inscribe a circle within it.</li>
+            <li>Uniformly scatter some objects of uniform size (grains of rice or sand) over the square.</li>
+            <li>Count the number of objects inside the circle and the total number of objects.</li>
+            <li>The ratio of the two counts is an estimate of the ratio of the two areas, which is π/4. Multiply the result by 4 to estimate π.</li>
+        </ol>
+        
+        <aside><a href="http://en.wikipedia.org/wiki/Monte_Carlo_method#Introduction">Wikipedia: Monte Carlo Method</a></aside>
+    </div>
+    <div class="equation">
+        <h3>1. Draw 50 dots x(random),y(random)</h3>
+        <h3>2. Calculate;</h3>
+        <div class="eq">
+            <p class="exp">4 x</p>
+        </div>       
+        <div class="left">
+            <p>Dots inside the circle <span id="hits" class="stat"></span></p>
+            <p class="symbol divide"></p>
+            <p>Total number of dots <span id="total" class="stat"></span></p>
+        </div>
+        <div class="eq">
+            <p class="equal">=</p>
+        </div>
+        <div class="right">
+            <br>
+            <br>
+            <p>Pi is approximately <span id="pi" class="stat">?</span></p>
+        </div>
+        <h3>3. Start again at 1</h3>
+    </div>
+</body>
+</html>
