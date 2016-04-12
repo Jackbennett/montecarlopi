@@ -35,7 +35,8 @@ ol{
     background-color: rgba(224, 224, 224, 0.80);
     border-radius: 8px;
     border: solid 1px gray;
-    padding: 5px
+    padding: 5px;
+    font-family: monospace;
 }
 
 #throws {
