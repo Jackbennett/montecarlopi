@@ -29,6 +29,9 @@ montecarlopi = function () {
     var misses = 0;
     var total = 0;
 
+    var paintScore
+    var paintHit
+
     // Draw circle
     ctx.arc(width / 2, height / 2, radius, 0, 2 * Math.PI);
     ctx.rect(0, 0, width, height);
@@ -55,7 +58,7 @@ montecarlopi = function () {
         datapoint += 1;
       }
 
-      setTimeout(loop, 0);
+      paintHit = setTimeout(loop, 0);
     }
 
     function throwOne() {
@@ -65,16 +68,11 @@ montecarlopi = function () {
 
         if (Math.pow(x, 2) + Math.pow(y, 2) <= 1) {
             ++hits;
-            hitsEl.textContent = hits
             var coloredPx = greenPx;
         } else {
             var coloredPx = redPx;
         }
         ++total;
-        totalEl.textContent = total;
-
-        // Recalculate pi
-        piEl.textContent = (4 * hits / total).toFixed(14);
 
         // Put pixel
         var imgX = (x + 1) / 2 * width;
@@ -83,5 +81,24 @@ montecarlopi = function () {
         throwCtx.putImageData(coloredPx, imgX, imgY);
     };
 
-    loop()
+    function score(){
+      hitsEl.textContent = hits
+      totalEl.textContent = total;
+      // Recalculate pi
+      piEl.textContent = (4 * hits / total).toFixed(14);
+
+      window.requestAnimationFrame(score)
+    }
+
+    function start(){
+      paintScore = window.requestAnimationFrame(score)
+      loop()
+    }
+
+    function pause(){
+      window.cancelAnimationFrame(paintScore)
+      window.clearTimeout(paintHit)
+    }
+
+    start()
 };
